@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+export class App extends Component {
   render() {
     return (
       <div className="App">
@@ -18,4 +19,13 @@ class App extends Component {
   }
 }
 
-export default App;
+App.propTypes = {
+  errors: PropTypes.array,
+};
+
+// mapStateToProps :: {State} -> {Props}
+const mapStateToProps = (state) => ({
+  errors: state.App.errors,
+});
+
+export default connect(mapStateToProps)(App);
